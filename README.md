@@ -4,6 +4,16 @@ This project is a **full-stack Todo Web App** built using **Node.js**, **Express
 Users can register, log in, and manage their todos securely. The app is designed with **role-based access control**, where admin users can view or manage other users’ todos.
 
 ---
+## Important Note :
+-  To Active Admin Panel Press =>   ctrl + shift + B
+-  To Active Admin Panel one user role
+  
+ should be 'admin'
+## UI:
+<img width="250" height="300" alt="Screenshot 2025-10-30 012803" src="https://github.com/user-attachments/assets/067f8f35-e525-496c-bcb7-4397610ac5c2" />
+ <img width="250" height="300" alt="Screenshot 2025-10-30 012824" src="https://github.com/user-attachments/assets/3dadd81e-3d1f-4a30-a405-24ce957aa034" />
+<img width="250" height="300" alt="Screenshot 2025-10-30 012836" src="https://github.com/user-attachments/assets/c28a7a00-51b1-4196-8f99-e45fdbc45db0" />
+<img width="250" height="300" alt="Screenshot 2025-10-30 012741" src="https://github.com/user-attachments/assets/8d468cac-225b-4c77-b7d6-e27efb19f407" />
 
 ## 🚀 Project Overview
 
