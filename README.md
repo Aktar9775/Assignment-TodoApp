@@ -6,9 +6,7 @@ Users can register, log in, and manage their todos securely. The app is designed
 ---
 ## Important Note :
 -  To Active Admin Panel Press =>   ctrl + shift + B
--  To Active Admin Panel one user role
-  
- should be 'admin'
+-  To Active Admin Panel one user role should be 'admin'
 ## UI:
 <img width="250" height="300" alt="Screenshot 2025-10-30 012803" src="https://github.com/user-attachments/assets/067f8f35-e525-496c-bcb7-4397610ac5c2" />
  <img width="250" height="300" alt="Screenshot 2025-10-30 012824" src="https://github.com/user-attachments/assets/3dadd81e-3d1f-4a30-a405-24ce957aa034" />
