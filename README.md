@@ -22,6 +22,39 @@ Users can register, log in, and manage their todos securely. The app is designed
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/secure-todo-app.git
-cd secure-todo-app
+git clone https://github.com/Aktar9775/Assignment-TodoApp.git
+cd Assignment-TodoApp
 ```
+### 2️⃣ Install dependencies
+```bash
+npm install
+```
+### Create a .env file in the project root
+```
+PORT=5000
+MONGO_URI=mongodb+srv://sohelnousad_db_user:Z7p7ugRNhMzQwVMy@cluster0.yp14v2p.mongodb.net/secure_todo_db?retryWrites=true&w=majority
+JWT_SECRET=replace_with_a_strong_secret
+JWT_EXPIRES_IN=7d
+BCRYPT_SALT_ROUNDS=10
+```
+## 🧩 How to Run the App
+### SERVER
+```
+CD SERVER
+npm run dev
+```
+### CLIENT
+```
+CD CLIENT
+npm run dev
+```
+## Tech Stack
+| Layer          | Technology              |
+| -------------- | ----------------------- |
+| Frontend       | React.js (planned)      |
+| Backend        | Node.js, Express.js     |
+| Database       | MongoDB Atlas           |
+| Authentication | JWT + bcrypt            |
+| Validation     | express-validator       |
+
+
