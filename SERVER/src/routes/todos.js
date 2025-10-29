@@ -68,19 +68,27 @@ router.put("/:id",
 );
 
 // DELETE /api/todos/:id
-router.delete("/:id", param("id").isMongoId(), handleValidation, async (req, res) => {
-  try {
-    const todo = await Todo.findById(req.params.id);
-    if (!todo) return res.status(404).json({ message: "Todo not found" });
+router.delete(
+  "/:id",
+  param("id").isMongoId(),
+  handleValidation,
+  async (req, res) => {
+    try {
+      const todo = await Todo.findById(req.params.id);
+      if (!todo) return res.status(404).json({ message: "Todo not found" });
 
-    if (req.user.role !== "admin" && todo.user.toString() !== req.user.id) {
-      return res.status(403).json({ message: "Forbidden" });
+      if (req.user.role !== "admin" && todo.user.toString() !== req.user.id) {
+        return res.status(403).json({ message: "Forbidden" });
+      }
+
+      await Todo.deleteOne({ _id: req.params.id }); // ✅ safer than .remove()
+      res.json({ message: "Deleted successfully" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Server error" });
     }
-    await todo.remove();
-    res.json({ message: "Deleted" });
-  } catch (err) {
-    res.status(500).json({ message: "Server error" });
   }
-});
+);
+
 
 export default router;

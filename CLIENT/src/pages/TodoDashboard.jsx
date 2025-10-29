@@ -8,26 +8,73 @@ export default function TodoDashboard({ user }) {
   const nav = useNavigate();
 
   const fetchTodos = async () => {
-    const res = await API.get("/todos");
-    setTodos(res.data);
+    try {
+      const res = await API.get("/todos");
+      setTodos(res.data);
+    } catch (err) {
+      console.error("Error fetching todos:", err);
+    }
   };
 
-  useEffect(() => { fetchTodos(); }, []);
+  const handleLogout = () => {
+    // Remove token and redirect to login page
+    localStorage.removeItem("token");
+    nav("/auth");
+  };
+
+ useEffect(() => {
+  if (!localStorage.getItem("token")) {
+    nav("/auth");
+  } else {
+    fetchTodos();
+  }
+}, []);
+
 
   return (
     <div className="p-6">
+      {/* Header Section */}
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl">Todos</h1>
         <div>
-          <button onClick={() => nav("/todos/new")} className="px-3 py-1 bg-green-600 text-white rounded">New Todo</button>
-          {user?.role === "admin" && (
-            <button onClick={() => nav("/admin")} className="ml-2 px-3 py-1 bg-blue-600 text-white rounded">Admin</button>
+          <h1 className="text-2xl font-semibold">Todos</h1>
+          {user && (
+            <p className="text-sm text-gray-600">
+              <span className="font-medium">{user.username}</span> (<span className="text-xs">{user._id}</span>)
+            </p>
           )}
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            onClick={() => nav("/todos/new")}
+            className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition"
+          >
+            New Todo
+          </button>
+
+          {user?.role === "admin" && (
+            <button
+              onClick={() => nav("/admin")}
+              className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Admin
+            </button>
+          )}
+
+          <button
+            onClick={handleLogout}
+            className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition"
+          >
+            Logout
+          </button>
         </div>
       </div>
 
+      {/* Todo List */}
       <div className="mt-6 grid gap-4">
-        {todos.map(t => <TodoCard key={t._id} todo={t} onChange={fetchTodos} />)}
+        {todos.map((t) => (
+          <TodoCard key={t._id} todo={t} onChange={fetchTodos} />
+        ))}
       </div>
     </div>
   );
